@@ -27,41 +27,36 @@ class Film {
             $this->actor = $actor;
             $this->catchexpression = $catchexpression;
             $this->duree = $duree; 
-            $this->category = $category;         
+            $this->category = $category;
+
         }
 
     //-------------------------------------------------------
-    //Fonction de recherche de la navbar 
+    //Fonction de recherche de la navbar
     //-------------------------------------------------------   
     public function get_searched_films($post){
 
-       //Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
-       $db=Database::getInstance();
+        //Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
+        $db=Database::getInstance();
+ 
+        // Get the user inputs
+        $searchInput = trim($post['search']);
+ 
+                
+        // Search in the db the films which title, tag or catch expression contains the search key
+        $query = "SELECT * FROM films WHERE title LIKE :title OR tags LIKE :tags OR catchexpression LIKE :catchexpression";
+ 
+        $data["title"] = '%' . $searchInput . '%';
+        $data["tags"] = '%' . $searchInput . '%';
+        $data["catchexpression"] = '%' . $searchInput . '%';
+ 
+         // return all the movies searched
+        $results=$db->read($query,$data);
 
-       // Get the user inputs
-       $searchInput = trim($post['search']);
-
-         
-       // Search in the db the films which title, tag or catch expression contains the search key
-       $query = $db->prepare('SELECT * FROM films WHERE title LIKE :title OR tags LIKE :tags OR catchexpression LIKE :catchexpression');
-
-       $data["title"] = '%' . $searchInput . '%';
-       $data["tags"] = '%' . $searchInput . '%';
-       $data["catchexpression"] = '%' . $searchInput . '%';
-
-       // Exécution de la requête
-       $query->execute($data);
-
-       // Récupération des résultats
-       $data = $query->fetchAll(PDO::FETCH_ASSOC);
-
-       //Retour des resultat
-       return $data;
-
-    }
-
-
-/*
+        return $results;
+ 
+     }
+ 
 
     //-------------------------------------------------------
     //Fonction de recuperation de tous les films 
@@ -84,29 +79,10 @@ class Film {
         return $data;      
     }
 
-*/
-    
-    //-------------------------------------------------------
-    //Fonction de recuperation de tous les films 
-    //-------------------------------------------------------   
-    public function get_all_films(){
 
-        //Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
-        $db=Database::getInstance();
-        
-       // Search in the db the films which tag contains the search key
-       $query = "SELECT * FROM films";
-       $results=$db->read($query);
-
-       return $results;
-
-   }
-
-
- 
 
     //-------------------------------------------------------
-    //Fonction de recuperation des films par categorie 
+    //Fonction de recuperation des films par categorie
     //-------------------------------------------------------   
 
     public function get_films_by_category($category){
@@ -130,9 +106,14 @@ class Film {
 
     }
 
+
+ //-----------------------------------------------------------------
+    //Fonction de recuperation des films pour toutes les categories 
+//------------------------------------------------------------------
+
     public function get_films_All_category(){
 
-        //Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
+      //Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
       $db=Database::getInstance();
         
       // Search in the db the films which title, tag or catch expression contains the search key
@@ -149,10 +130,8 @@ class Film {
       //Retour des resultat
       return $data;
 
-   }
-
-
-    
+ }
+   
 
    
 

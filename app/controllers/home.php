@@ -15,6 +15,7 @@ class Home extends Controller{
 
         // Ici, la liste des film vient de la fonction get_all_film
         $this->displayedData=$film->get_all_films();
+       
            
        //Si on fait un clic de POST sur la page
         if($_SERVER["REQUEST_METHOD"]=="POST")
