@@ -16,19 +16,21 @@
 
 <div class="mt-1 container">
 
-        <section class="container-fluid vh-100" style="background-color: #ffffff;">
+        <section class="container-fluid vh-100 w-100" style="background-color: #ffffff;">
         <div class="container py-1 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
-                <div class="card border border-2 border-primary" style="border-radius: 1rem;">
+                <div class="card border border-2 border-danger" style="border-radius: 1rem;">
                 <div class="row g-0">
-                    <div class="col-md-6 col-lg-5 d-none d-md-block">
+                    <div class="col-md-7 col-lg-7 d-none d-md-block">
         <!--            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"    -->
-                    <img src="<?=ASSETS?>images/The-Importance-of-Making-Women-Laugh-woman-laughing.jpg" 
-                        alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+        <!--            <img src="<?=ASSETS?>images/The-Importance-of-Making-Women-Laugh-woman-laughing.jpg"           -->
+                    <img src="<?=ASSETS?>images/776310.jpg"
+                    
+                        alt="login form" class="img-fluid border h-100 border-1 border-black" style="border-radius: 1rem 0 0 1rem;" />
                     </div>
-                    <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                    <div class="card-body p-1 p-lg-5 text-black">
+                    <div class="col-md-5 col-lg-5 d-flex align-items-center">
+                    <div class="card-body p-3 p-lg-5 text-black">
 
                         <form>
 
@@ -50,7 +52,7 @@
                         </div>
 
                         <div class="pt-1 mb-1">
-                            <button class="btn btn-outline-dark btn-lg btn-block" type="button">Login</button>
+                            <a href="<?=ROOT?>film/"><button class="btn btn-outline-dark btn-lg btn-block" type="button">Login</button></a>
                         </div>
 
                         <a class="small text-muted" href="#!">Forgot password?</a>

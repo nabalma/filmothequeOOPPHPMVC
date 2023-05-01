@@ -29,52 +29,22 @@
 		</div>
 		<!-- Title -->
 
-		
-
-		<!-- Nav Bar -->
-		<!--
-		<div class="container-fluid">
-			<nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">
-		    <div class="container">
-		    	<a class="navbar-brand" href="index.html">ANDRE, L'EXPERT DESIGNER DE LA RUE MASSON</a>
-		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-		        <span class="fa fa-bars"></span> Menu
-		      </button>
-
-			  <form class="d-flex">
-				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
-        	</form>
-
-		      <div class="collapse navbar-collapse" id="ftco-nav">
-		        <ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="#" class="nav-link">ADMIN</a></li>
-		        	<li class="nav-item"><a href="#" class="nav-link">FILMOTHEQUE</a></li>
-		        	
-		        </ul>
-		      </div>
-		    </div>
-		  </nav>
-    	
-  		</div>
-		-->
-		<!-- End NavBar -->
-
 
 <div class="container mt-1 rounded-3 bg-primary">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Menu</a>
+    <a class="navbar-brand" href="<?php ROOT ?>">Menu</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">FILMOTHEQUE</a>
+          <a class="nav-link active" aria-current="page" href="<?php ROOT ?>">FILMOTHEQUE</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">ADMIN</a>
+		 
         </li>
       </ul>
       <form class="d-flex" method="post">
@@ -152,7 +122,10 @@
 					<div class="card me-1"  >
 					<img src="<?php echo ASSETS ?>posters/<?=$row["poster"]?>" class="mt-2 card-img-top" alt="..." style="max-height:350px">
 					<div class="card-body">
-						<h5 class="p-0 card-title"><?=$row["title"]?></h5>
+						<div class="row d-flex justify-content-between">
+						<h5 class="col-10 p-0 card-title"><?=$row["title"]?></h5>
+						<h5 class="visually-hidden col-2 p-0 card-title "><span class="p-2 rounded-circle border border-dark border-1"><?=$row["ref"]?></span></h5>
+						</div>
 						<p class="p-0 card-text"><?=$row["catchexpression"]?></p>
 						<div class="row d-flex justify-content-between">
 						<p class="col-8 p-0 card-text"><span class="fw-bold">Catégorie :</span> <?=$row["category"]?></p>
@@ -162,10 +135,11 @@
 					
 					<div class="d-flex justify-content-between card-footer">
 						<span class="fw-bold"><?=$row["actor"]?></span>
-						<a href="<?=ROOT?>film/" class="card-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Plus de détails"><svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 24 24"><path fill="red" d="M12 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2Z"/></svg></a>
+						<a href="<?=ROOT?>lecteur/index?id=<?= $row["ref"]?>" class="card-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Plus de détails"><svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 24 24"><path fill="red" d="M12 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2Z"/></svg></a>
 					</div>
 
 					</div>
+					
 				</div>
 
 				<?php endforeach; ?>

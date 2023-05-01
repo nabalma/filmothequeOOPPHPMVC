@@ -171,16 +171,37 @@ class Film {
  }
    
 
-   
+  //-----------------------------------------------------------------
+    //Fonction de recuperation d'un film, connaissant a reference 
+//-------------------------------------------------------------------
+    public function get_film($ref){
 
-              
+     //Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
+      $conn=Database::getConnInstance();
+        
+      // Search in the db the films which title, tag or catch expression contains the search key
+      $query='SELECT * FROM films WHERE ref=:ref';
+      $stmt = $conn->prepare($query);
+
+      $data["ref"] =$ref;
+
+      // Exécution de la requête
+      $stmt->execute($data);
+
+      // Récupération des résultats
+      $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      //Retour des resultat
+      return $data;
+
+
+    } 
+    
+    
+
     public function delete($url){
 
     }
-
-    public function get_film($url){
-
-    }   
 
 }
 
