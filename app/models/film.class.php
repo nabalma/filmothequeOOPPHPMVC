@@ -37,7 +37,8 @@ class Film {
     public function get_searched_films($post){
 
         //Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
-        $db=Database::getInstance();
+        $db= new Database();
+        show($db);
  
         // Get the user inputs
         $searchInput = trim($post['search']);
@@ -53,7 +54,7 @@ class Film {
         $results=$db->read($query,$data);
 
         return $results;
- 
+
      }
 
 */
@@ -71,18 +72,19 @@ class Film {
         $searchInput = trim($post['search']);
             
         // Search in the db the films which title, tag or catch expression contains the search key
-        $query = $conn->prepare("SELECT * FROM films WHERE title LIKE :title OR tags LIKE :tags OR catchexpression LIKE :catchexpression");
+        $query="SELECT * FROM films WHERE title LIKE :title OR tags LIKE :tags OR catchexpression LIKE :catchexpression";
+        $stmt = $conn->prepare($query);
  
         $data["title"] = '%' . $searchInput . '%';
         $data["tags"] = '%' . $searchInput . '%';
         $data["catchexpression"] = '%' . $searchInput . '%';
  
          // return all the movies searched
-        $query->execute($data);
+        $stmt->execute($data);
 
 
          // Récupération des résultats
-         $results = $query->fetchAll(PDO::FETCH_ASSOC);
+         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
  
@@ -101,13 +103,14 @@ class Film {
          $conn=Database::getConnInstance();
          
         // Search in the db the films which tag contains the search key
-        $query = $conn->prepare('SELECT * FROM films');
+        $query='SELECT * FROM films';
+        $stmt = $conn->prepare($query);
 
         // Exécution de la requête
-        $query->execute();
+        $stmt->execute();
 
         // Récupération des résultats
-        $data = $query->fetchAll(PDO::FETCH_ASSOC);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         //Retour des resultat
         return $data;      
@@ -125,15 +128,16 @@ class Film {
        $conn=Database::getConnInstance();
          
        // Search in the db the films which title, tag or catch expression contains the search key
-       $query = $conn->prepare('SELECT * FROM films WHERE category =:category');
+       $query = 'SELECT * FROM films WHERE category =:category';
+       $stmt = $conn->prepare($query);
 
        $data["category"] = $category;
 
        // Exécution de la requête
-       $query->execute($data);
+       $stmt->execute($data);
 
        // Récupération des résultats
-       $data = $query->fetchAll(PDO::FETCH_ASSOC);
+       $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
        //Retour des resultat
        return $data;
@@ -151,15 +155,16 @@ class Film {
       $conn=Database::getConnInstance();
         
       // Search in the db the films which title, tag or catch expression contains the search key
-      $query = $conn->prepare('SELECT * FROM films WHERE category LIKE :category');
+      $query='SELECT * FROM films WHERE category LIKE :category';
+      $stmt = $conn->prepare($query);
 
       $data["category"] ='%';
 
       // Exécution de la requête
-      $query->execute($data);
+      $stmt->execute($data);
 
       // Récupération des résultats
-      $data = $query->fetchAll(PDO::FETCH_ASSOC);
+      $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       //Retour des resultat
       return $data;
