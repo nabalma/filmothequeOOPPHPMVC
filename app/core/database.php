@@ -62,7 +62,7 @@ public function read($query,$data=array()){
 
     //Gestion du resultat de la requete 
     if($result){
-        $data = $stm->fetchAll(PDO::FETCH_OBJ);
+        $data = $stm->fetchAll(PDO::FETCH_ASSOC);
         if(is_array($data)){
             return $data;
         }

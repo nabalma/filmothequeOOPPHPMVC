@@ -30,7 +30,8 @@ class Film {
             $this->category = $category;
 
         }
-/*
+
+        /*
     //-------------------------------------------------------
     //Fonction de recherche de la navbar
     //-------------------------------------------------------   
@@ -89,8 +90,6 @@ class Film {
         return $results;
  
      }
-
-
 
  
 
