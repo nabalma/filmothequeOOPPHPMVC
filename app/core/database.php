@@ -4,6 +4,7 @@ class Database{
 
 public static $con;
 
+
 //-----------------------------------------------------------------------------------
 // I- CONSTRUCTEUR de la classe DATABASE (il a pour role de creer une connexion a la BD)
 //------------------------------------------------------------------------------------
@@ -33,14 +34,14 @@ public function __construct()
 //sinon, elle instancie la classe (la construit) et return linstance (la classe en entier)
 //------------------------------------------------------------------------------------
 
-public static function getInstance()
+public static function getConnInstance()
 {
     if(self::$con){
         return self::$con;
     }
     
-    $dbaInstance = new self();
-    return $dbaInstance;
+    $dbInstance = new self();
+    return $dbInstance::$con;
 
 }
 
