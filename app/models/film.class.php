@@ -30,7 +30,7 @@ class Film {
             $this->category = $category;
 
         }
-
+/*
     //-------------------------------------------------------
     //Fonction de recherche de la navbar
     //-------------------------------------------------------   
@@ -41,8 +41,7 @@ class Film {
  
         // Get the user inputs
         $searchInput = trim($post['search']);
- 
-                
+            
         // Search in the db the films which title, tag or catch expression contains the search key
         $query = "SELECT * FROM films WHERE title LIKE :title OR tags LIKE :tags OR catchexpression LIKE :catchexpression";
  
@@ -56,6 +55,41 @@ class Film {
         return $results;
  
      }
+
+*/
+
+
+         //-------------------------------------------------------
+    //Fonction de recherche de la navbar
+    //-------------------------------------------------------   
+    public function get_searched_films($post){
+
+        //Instanciation de la BD, Ne pas instancier une db car il se peut qune soit deja instancier quelque part. Faire plutot get instance...
+        $db=Database::getInstance();
+ 
+        // Get the user inputs
+        $searchInput = trim($post['search']);
+            
+        // Search in the db the films which title, tag or catch expression contains the search key
+        $query = $db->prepare("SELECT * FROM films WHERE title LIKE :title OR tags LIKE :tags OR catchexpression LIKE :catchexpression");
+ 
+        $data["title"] = '%' . $searchInput . '%';
+        $data["tags"] = '%' . $searchInput . '%';
+        $data["catchexpression"] = '%' . $searchInput . '%';
+ 
+         // return all the movies searched
+        $query->execute($data);
+
+
+         // Récupération des résultats
+         $results = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+ 
+     }
+
+
+
  
 
     //-------------------------------------------------------

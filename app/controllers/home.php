@@ -28,6 +28,7 @@ class Home extends Controller{
                 $this->displayedData=$film->get_searched_films($_POST);
 
             }
+            
 
             if(isset($_POST["submit_Category_Action"])){ //S'il s'agit du bouton Category Action
 
