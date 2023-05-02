@@ -43,7 +43,7 @@
           <a class="nav-link active" aria-current="page" href="<?php ROOT ?>">FILMOTHEQUE</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ADMIN</a>
+          <a class="nav-link" href="<?php ROOT ?>admin/">ADMIN</a>
 		 
         </li>
       </ul>
