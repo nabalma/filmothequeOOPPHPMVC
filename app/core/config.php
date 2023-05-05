@@ -7,6 +7,7 @@ $path = str_replace("index.php","",$path);
 define("ROOT",$path);
 define("ASSETS",$path."assets/");
 
+define("DOC_ROOT","C:/xampp/htdocs");
 
 // Website Titles
 define("WEBSITE_TITLE","FILMOTHEQUE");

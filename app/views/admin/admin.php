@@ -23,7 +23,7 @@
 					<h2 class="heading-section">
 						<svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path fill="red" d="M18.001 20H20v2h-8C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10a9.985 9.985 0 0 1-3.999 8ZM12 10a2 2 0 1 0 0-4a2 2 0 0 0 0 4Zm-4 4a2 2 0 1 0 0-4a2 2 0 0 0 0 4Zm8 0a2 2 0 1 0 0-4a2 2 0 0 0 0 4Zm-4 4a2 2 0 1 0 0-4a2 2 0 0 0 0 4Z"/>
 						</svg>
-				ANDRE FILMOTHEQUE</h2>
+				FILMOTHEQUE</h2>
 				</div>
 			</div>
 		</div>
@@ -38,17 +38,17 @@
 <div class="container mt-1 rounded-3 bg-primary">
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
   <div class="container-fluid ">
-    <a class="navbar-brand" href="<?php ROOT ?>">Menu</a>
+    <a class="navbar-brand" href="<?= ROOT ?>home">Menu</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?php ROOT ?>">FILMOTHEQUE</a>
+          <a class="nav-link" aria-current="page" href="<?= ROOT ?>">FILMOTHEQUE</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="<?php ROOT ?>admin/">ADMIN</a>
+          <a class="nav-link active" href="#">ADMIN</a>
 		 
         </li>
       </ul>
@@ -117,24 +117,25 @@
 <!-- End Categories Buttons -->
 
 <!-- Add Film  -->
-<div class="container mt-1 mb-2 card w-75 mx-auto border border-dark">
+<div class="container mt-1 mb-2 card w-75 mx-auto border border-dark d-none d-md-block">
 
-    <div class="row " >
-        <div class="col-4 bg-light "style="border-radius:5px 0px 0px 5px">
+    <div class="row container" >
+        <div class="col-3 bg-light "style="border-radius:5px 0px 0px 5px">
 
         </div>
-        <div class="col-8">
-
+       
+        <form class="col-9" method="post" enctype="multipart/form-data">
+        <h6 class="ms-2 fw-bold row">Informations</h6>
         <div class="row mt-1 mb-1">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Durée (hh:mm:ss)" aria-label="Last name">
+            <input type="text" class="form-control" name="length" placeholder="Durée (hh:mm:ss)" aria-label="Duree">
             </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Actor" aria-label="Last name">
+            <input type="text" class="form-control" name="actor" placeholder="Actor" aria-label="Actor">
         </div>
 
         <div class="col">
-            <input type="text" class="form-control" placeholder="Titre" aria-label="First name">
+            <input type="text" class="form-control" name="title" placeholder="Titre" aria-label="Titre">
         </div>
         
 
@@ -143,66 +144,64 @@
 
         <div class="row mt-1 mb-1">
         <div class="col">
-        <textarea class="form-control" aria-label="With textarea" placeholder="catchexpression"></textarea>
+        <textarea class="form-control" aria-label="With textarea" name="catchexpression" placeholder="catchexpression"></textarea>
         </div>
         <div class="col">
-        <textarea class="form-control" aria-label="With textarea" placeholder="tags séparés par un espace"></textarea>
+        <textarea class="form-control" aria-label="With textarea" name="tags" placeholder="tags séparés par un espace"></textarea>
         </div>
-        <div class="col">
-        <textarea class="form-control" aria-label="With textarea" placeholder="To be completed"></textarea>
-        </div>
+       
         </div>
 
-
-        <div class=" mt-1 mb-1 d-flex justify-content-around">
-            <div class="d-flex justify-content-around form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <h6 class=" ms-2 fw-bold row">Catégorie</h6>
+        <div class=" row mt-1 mb-1 d-flex justify-content-between ">
+            <div class="col d-flex justify-content-around form-check form-check-inline ">
+            <input class="form-check-input" type="radio" id="inlineCheckbox1" value="action" name="category">
             <label class="form-check-label" for="inlineCheckbox1">Action</label>
             </div>
-            <div class="d-flex justify-content-around form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+            <div class="col d-flex justify-content-around form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox2" value="suspens" name="category">
             <label class="form-check-label" for="inlineCheckbox2">Suspens</label>
             </div>
-            <div class="d-flex justify-content-around form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <div class="col d-flex justify-content-around form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox3" value="aventure" name="category">
             <label class="form-check-label" for="inlineCheckbox3">Aventure</label>
             </div>
-            <div class="d-flex justify-content-around form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <div class="col d-flex justify-content-around form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox3" value="fiction" name="category">
             <label class="form-check-label" for="inlineCheckbox3">Fiction</label>
             </div>
-            <div class="d-flex justify-content-around form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <div class="col d-flex justify-content-around form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox3" value="romance" name="category">
             <label class="form-check-label" for="inlineCheckbox3">Romance</label>
             </div>
-            <div class="d-flex justify-content-around form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <div class="col d-flex justify-content-around form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox3" value="horreur" name="category">
             <label class="form-check-label" for="inlineCheckbox3">Horreur</label>
             </div>
         </div>
 
 
-
+        <h6 class="ms-2 fw-bold row">Fichiers</h6>
         <div class="mt-1 row">
             <div class="col input-group mb-1">
-            <input type="file" class="form-control" id="inputGroupFile02">
-            <label class="input-group-text" for="inputGroupFile02">Téléverser Poster</label>
+            <input type="file" class="form-control" id="inputGroupFile01" name="poster">
+            <label class="input-group-text" for="inputGroupFile01">Téléverser Poster</label>
             </div>
         </div>
         
         <div class="mt-1 row">    
             <div class="col input-group mb-1">
-            <input type="file" class="form-control" id="inputGroupFile02">
+            <input type="file" class="form-control" id="inputGroupFile02" name="film">
             <label class="input-group-text" for="inputGroupFile02">Téléverser le Film</label>
             </div>           
         </div>
 
         <div class="mb-1 d-flex justify-content-end col-12">
-            <button class="btn btn-primary" type="submit">Ajouter un Film</button>
+            <button class="btn btn-primary" type="submit" name="ajout_Film">Ajouter un Film</button>
         </div>
 
 
-        </div>
+        </form>
     </div>
 
 
@@ -218,69 +217,51 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-      <th scope="col">Handle</th>
-      <th scope="col">Handle</th>
-      <th scope="col">Handle</th>
-      <th scope="col">Handle</th>
-      <th scope="col">Editer</th>
-      <th scope="col">Supprimer</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Tags</th>
+      <th scope="col">Categories</th>
+      <th scope="col">Poster</th>
+      <th scope="col">Film</th>
+      <th scope="col">Acteur</th>
+      <th scope="col">Accroche</th>
+      <th scope="col">Durée</th>
+      <th scope="col">Lecture</th>
+      <th scope="col">Edition</th>
+      <th scope="col">Suppression</th>
      
 
 
     </tr>
   </thead>
   <tbody>
+
+<?php foreach ($this->displayedData as $key => $value) : ?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Handle</td>
-      <td>Handle</td>
-      <td>Handle</td>
-      <td>Handle</td>
+      <th scope="row"><?= $value["ref"] ?></th>
+      <td><?= $value["title"] ?></td>
+      <td><?= $value["tags"] ?></td>
+      <td><?= $value["category"] ?></td>
+      <td><img src=<?= ASSETS."posters/". $value["poster"] ?> class="img-thumbnail" alt="..."></td>
+      <td><?= $value["movie"] ?></td>
+      <td><?= $value["actor"] ?></td>
+      <td><?= $value["catchexpression"] ?></td>
+      <td><?= $value["duree"] ?></td>
+      <td class="m-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24"><path fill="red" d="m9.5 16.5l7-4.5l-7-4.5v9ZM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Z"/>
+          </svg>
+      </td>
       <td>
         <svg class="" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24"><path fill="#063E61" d="m19.3 8.925l-4.25-4.2l1.4-1.4q.575-.575 1.413-.575t1.412.575l1.4 1.4q.575.575.6 1.388t-.55 1.387L19.3 8.925ZM17.85 10.4L7.25 21H3v-4.25l10.6-10.6l4.25 4.25Z"/>
         </svg>
     </td>
       <td>
-      <svg xmlns="http://www.w3.org/2000/svg" width="1.7rem" height="1.7rem" viewBox="0 0 28 28"><path fill="#B00315" d="M11.5 6h5a2.5 2.5 0 0 0-5 0ZM10 6a4 4 0 0 1 8 0h6.25a.75.75 0 0 1 0 1.5h-1.31l-1.217 14.603A4.25 4.25 0 0 1 17.488 26h-6.976a4.25 4.25 0 0 1-4.235-3.897L5.06 7.5H3.75a.75.75 0 0 1 0-1.5H10Zm2.5 5.75a.75.75 0 0 0-1.5 0v8.5a.75.75 0 0 0 1.5 0v-8.5Zm3.75-.75a.75.75 0 0 0-.75.75v8.5a.75.75 0 0 0 1.5 0v-8.5a.75.75 0 0 0-.75-.75Z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 28 28"><path fill="#B00315" d="M11.5 6h5a2.5 2.5 0 0 0-5 0ZM10 6a4 4 0 0 1 8 0h6.25a.75.75 0 0 1 0 1.5h-1.31l-1.217 14.603A4.25 4.25 0 0 1 17.488 26h-6.976a4.25 4.25 0 0 1-4.235-3.897L5.06 7.5H3.75a.75.75 0 0 1 0-1.5H10Zm2.5 5.75a.75.75 0 0 0-1.5 0v8.5a.75.75 0 0 0 1.5 0v-8.5Zm3.75-.75a.75.75 0 0 0-.75.75v8.5a.75.75 0 0 0 1.5 0v-8.5a.75.75 0 0 0-.75-.75Z"/>
         </svg>
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Handle</td>
-      <td>Handle</td>
-      <td>Handle</td>
-      <td>Handle</td>
-      <td><svg class="" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24"><path fill="#063E61" d="m19.3 8.925l-4.25-4.2l1.4-1.4q.575-.575 1.413-.575t1.412.575l1.4 1.4q.575.575.6 1.388t-.55 1.387L19.3 8.925ZM17.85 10.4L7.25 21H3v-4.25l10.6-10.6l4.25 4.25Z"/>
-        </svg></td>
-      <td><svg xmlns="http://www.w3.org/2000/svg" width="1.7rem" height="1.7rem" viewBox="0 0 28 28"><path fill="#B00315" d="M11.5 6h5a2.5 2.5 0 0 0-5 0ZM10 6a4 4 0 0 1 8 0h6.25a.75.75 0 0 1 0 1.5h-1.31l-1.217 14.603A4.25 4.25 0 0 1 17.488 26h-6.976a4.25 4.25 0 0 1-4.235-3.897L5.06 7.5H3.75a.75.75 0 0 1 0-1.5H10Zm2.5 5.75a.75.75 0 0 0-1.5 0v8.5a.75.75 0 0 0 1.5 0v-8.5Zm3.75-.75a.75.75 0 0 0-.75.75v8.5a.75.75 0 0 0 1.5 0v-8.5a.75.75 0 0 0-.75-.75Z"/>
-        </svg></td>
-    </tr>
-    <tr>
-    <th scope="row">3</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Handle</td>
-      <td>Handle</td>
-      <td>Handle</td>
-      <td>Handle</td>
-      <td><svg class="" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24"><path fill="#063E61" d="m19.3 8.925l-4.25-4.2l1.4-1.4q.575-.575 1.413-.575t1.412.575l1.4 1.4q.575.575.6 1.388t-.55 1.387L19.3 8.925ZM17.85 10.4L7.25 21H3v-4.25l10.6-10.6l4.25 4.25Z"/>
-        </svg></td>
-      <td>
-        <svg xmlns="http://www.w3.org/2000/svg" width="1.7rem" height="1.7rem" viewBox="0 0 28 28"><path fill="#B00315" d="M11.5 6h5a2.5 2.5 0 0 0-5 0ZM10 6a4 4 0 0 1 8 0h6.25a.75.75 0 0 1 0 1.5h-1.31l-1.217 14.603A4.25 4.25 0 0 1 17.488 26h-6.976a4.25 4.25 0 0 1-4.235-3.897L5.06 7.5H3.75a.75.75 0 0 1 0-1.5H10Zm2.5 5.75a.75.75 0 0 0-1.5 0v8.5a.75.75 0 0 0 1.5 0v-8.5Zm3.75-.75a.75.75 0 0 0-.75.75v8.5a.75.75 0 0 0 1.5 0v-8.5a.75.75 0 0 0-.75-.75Z"/>
-        </svg>
-      </td>
-    </tr>
+    <?php  endforeach; ?>
+
+
   </tbody>
 </table>
 

@@ -45,6 +45,13 @@ public static function getConnInstance()
 
 }
 
+public static function getDbInstance()
+{       
+    $dbInstance = new self();
+    return $dbInstance;
+
+}
+
 
 //--------------------------------------------------------------------------------------------------------------
 // III- FONCTION READ DEPUIS LA BD (Concerne les requetes pour lesquels on attend des valeurs retours de la BD). Cette fonction admet deux parametres.

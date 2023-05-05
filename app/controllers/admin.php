@@ -11,7 +11,49 @@ class Admin extends Controller{
 
     // Il sagit ici de la fonction index du controleur Home. En effet, si lurl est home/index, cest cette fonction index qui sexecute. 
     
-    public function index(){  
+    public function index(){ 
+
+        //1.0- Importer le fichier modele
+             //Importation du modele Film , necessaire pour lajout de film. En instancier un objet.
+             $film = $this->load_model("Film"); //Attention, le parametre a provider ici doit etre entre quote (cest un string ) et doit commencer par une majuscule
+             $this->displayedData=$film->get_all_films();
+         
+
+
+
+        ////////////////////////////////////////////////////////////////
+        //** 1-Ajout d'un nouveau film 
+        if(isset($_POST["ajout_Film"])){
+
+             
+
+             //1.1- Execution de la fonction login de la classe User (Appel de la fonction --> Connexion du User)
+                $collectedData = $film->collectData($_POST);
+
+                $checkedData=$film->checkData($collectedData);
+
+                $film->saveFilm($checkedData);
+         
+        } 
+
+        ///////////////////////////////////////////////////////////////
+        //**2-Edition d'un film existant 
+        if(isset($_POST["ajout_Film"])){
+
+
+
+
+        } 
+
+        //////////////////////////////////////////////////////////////
+        //**3-Suppresion d'un film existant 
+        if(isset($_POST["ajout_Film"])){
+
+
+
+
+        } 
+  
 
         
         
